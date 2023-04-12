@@ -1,23 +1,19 @@
 {
   "title": "html2canvas",
-  "name": "html2canvas",
+  "name": "html2canvas-contain",
   "description": "Screenshots with JavaScript",
   "main": "dist/html2canvas.js",
   "module": "dist/html2canvas.esm.js",
   "typings": "dist/types/index.d.ts",
   "browser": "dist/html2canvas.js",
-  "version": "1.4.1",
-  "author": {
-    "name": "Niklas von Hertzen",
-    "email": "niklasvh@gmail.com",
-    "url": "https://hertzen.com"
-  },
+  "version": "1.4.2",
+  "author": "Niklas von Hertzen <niklasvh@gmail.com> (https://hertzen.com)",
   "engines": {
     "node": ">=8.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:niklasvh/html2canvas.git"
+    "url": "git+ssh://git@github.com/niklasvh/html2canvas.git"
   },
   "bugs": {
     "url": "https://github.com/niklasvh/html2canvas/issues"
@@ -116,9 +112,19 @@
     "start": "ts-node tests/server --port=8080 --cors=8081"
   },
   "homepage": "https://html2canvas.hertzen.com",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "css-line-break": "^2.1.0",
     "text-segmentation": "^1.0.3"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "tests"
+  },
+  "keywords": [
+    "util",
+    "image",
+    "html"
+  ]
 }

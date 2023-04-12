@@ -270,25 +270,49 @@ export class CanvasRenderer extends Renderer {
         curves: BoundCurves,
         image: HTMLImageElement | HTMLCanvasElement
     ): void {
+        // if (image && container.intrinsicWidth > 0 && container.intrinsicHeight > 0) {
+        //     const box = contentBox(container);
+        //     const path = calculatePaddingBoxPath(curves);
+        //     this.path(path);
+        //     this.ctx.save();
+        //     this.ctx.clip();
+        //     this.ctx.drawImage(
+        //         image,
+        //         0,
+        //         0,
+        //         container.intrinsicWidth,
+        //         container.intrinsicHeight,
+        //         box.left,
+        //         box.top,
+        //         box.width,
+        //         box.height
+        //     );
+        //     this.ctx.restore();
+        // }
         if (image && container.intrinsicWidth > 0 && container.intrinsicHeight > 0) {
-            const box = contentBox(container);
-            const path = calculatePaddingBoxPath(curves);
-            this.path(path);
-            this.ctx.save();
-            this.ctx.clip();
-            this.ctx.drawImage(
-                image,
-                0,
-                0,
-                container.intrinsicWidth,
-                container.intrinsicHeight,
-                box.left,
-                box.top,
-                box.width,
-                box.height
-            );
-            this.ctx.restore();
-        }
+                var box = contentBox(container);
+                var path = calculatePaddingBoxPath(curves);
+                this.path(path);
+                this.ctx.save();
+                this.ctx.clip();
+                let newWidth;
+                let newHeight;
+                let newX = box.left;
+                let newY = box.top;
+                // 图片宽/盒子宽< 图片高/盒子高 就说明宽度比较小所以图片高度不变宽度计算
+                if (container.intrinsicWidth / box.width < container.intrinsicHeight / box.height) {
+                    newHeight = box.height;
+                    newWidth = container.intrinsicWidth * (box.height / container.intrinsicHeight);
+                    newX = box.left + (box.width - newWidth) / 2;
+                } else {
+                    // 图片宽/盒子宽> 图片高/盒子高 就说明高比较小所以图片宽不变高度计算
+                    newHeight = container.intrinsicHeight * (box.width / container.intrinsicWidth);
+                    newWidth = box.width;
+                    newY = box.top + (box.height - newHeight) / 2;
+                }
+                this.ctx.drawImage(image, 0, 0, container.intrinsicWidth, container.intrinsicHeight, newX, newY, newWidth, newHeight);
+                this.ctx.restore();
+            }
     }
 
     async renderNodeContent(paint: ElementPaint): Promise<void> {
