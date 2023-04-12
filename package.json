@@ -6,15 +6,12 @@
   "module": "dist/html2canvas.esm.js",
   "typings": "dist/types/index.d.ts",
   "browser": "dist/html2canvas.js",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "author": "Niklas von Hertzen <niklasvh@gmail.com> (https://hertzen.com)",
   "engines": {
     "node": ">=8.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/niklasvh/html2canvas.git"
-  },
+  "repository": "git+ssh://git@github.com/niklasvh/html2canvas.git",
   "bugs": {
     "url": "https://github.com/niklasvh/html2canvas/issues"
   },
