@@ -109,7 +109,7 @@
     "start": "ts-node tests/server --port=8080 --cors=8081"
   },
   "homepage": "https://html2canvas.hertzen.com",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "css-line-break": "^2.1.0",
     "text-segmentation": "^1.0.3"
